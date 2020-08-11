@@ -1,8 +1,19 @@
 import React, { Suspense } from 'react';
-import { Routes } from './Routes';
+import { Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 
-export const App = () => (
-  <Suspense fallback={'Carregando...'}>
-    <Routes />
-  </Suspense>
-);
+import { Loading } from 'components/shared/Loading';
+import { Routes } from 'components/Routes';
+
+export const App = () => {
+  const history = createBrowserHistory();
+
+  return (
+    <Router history={history}>
+      <Suspense fallback={<Loading alwaysVisible />}>
+        <Loading />
+        <Routes />
+      </Suspense>
+    </Router>
+  );
+};
