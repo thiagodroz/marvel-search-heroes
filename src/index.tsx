@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { App } from 'components/App';
 
 import * as serviceWorker from 'serviceWorker';
-import './index.scss';
+import 'styles/index.scss';
 import 'typeface-work-sans';
 
 ReactDOM.render(
