@@ -1,9 +1,18 @@
+@import '../../../../../styles/constants';
+
 .Component {
   text-align: center;
 }
 
 .Title {
+  margin: 0.75rem;
+  color: $dark-text-color;
+  font-size: 2em;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .Subtitle {
+  color: $light-text-color;
+  font-size: 0.8em;
 }
