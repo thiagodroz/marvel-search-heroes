@@ -1,3 +1,5 @@
 import React from 'react';
 
-export const HeroPage: React.FC = () => <div>Hero</div>;
+import { Container } from 'components/shared/Container';
+
+export const HeroPage: React.FC = () => <Container>Hero</Container>;

@@ -1,0 +1,20 @@
+@import '../../../styles/mixins';
+
+.Component {
+  width: 100%;
+  margin: 0 auto;
+  background-color: mediumpurple;
+
+  @include respond-to('medium') {
+    max-width: 680px;
+    background-color: lightcoral;
+  }
+  @include respond-to('large') {
+    max-width: 780px;
+    background-color: tomato;
+  }
+  @include respond-to('xlarge') {
+    max-width: 900px;
+    background-color: palegreen;
+  }
+}
