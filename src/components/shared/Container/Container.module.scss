@@ -2,15 +2,18 @@
 
 .Component {
   max-width: 100%;
-  padding: 3rem 2rem;
+  padding: 2rem;
 
   @include respond-to('medium') {
+    width: 100%;
     max-width: 680px;
   }
   @include respond-to('large') {
+    width: 100%;
     max-width: 900px;
   }
   @include respond-to('xlarge') {
+    width: 100%;
     max-width: 1000px;
   }
 }

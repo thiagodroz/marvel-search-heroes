@@ -1,0 +1,12 @@
+@import '../../../../../styles/constants';
+
+.Component {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: $primary-color;
+}
+
+.Text {
+  color: #fff;
+}
