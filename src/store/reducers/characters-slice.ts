@@ -60,10 +60,19 @@ export const {
         ),
       };
     },
+    fetchCharactersListSaga(state, action: PayloadAction<void>) {},
+    favoriteCharacterSaga(state, action: PayloadAction<Character>) {},
   },
 });
 
 // Selectors
-export const getCharactersList = ({ uiState }: RootState) => {
-  return uiState.loading;
-};
+export const getCharactersList = ({ charactersState }: RootState) =>
+  charactersState.charactersList;
+
+export const getFavoriteCharacters = ({ charactersState }: RootState) =>
+  charactersState.favoriteCharacters;
+
+// Action Types
+export type FavoriteCharacterSagaAction = ReturnType<
+  typeof CharactersActions.favoriteCharacterSaga
+>;
