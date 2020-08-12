@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useLoading } from './Loading.hook';
+
 import LoadingSvg from 'assets/loading.svg';
 import './Loading.scss';
 
@@ -9,7 +11,9 @@ interface LoadingProps {
 }
 
 export const Loading: React.FC<LoadingProps> = ({ alwaysVisible = false }) => {
-  if (!alwaysVisible) return null;
+  const { loading } = useLoading();
+
+  if (!alwaysVisible && !loading) return null;
 
   return (
     <div className="loading">
