@@ -1,10 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { RootState } from 'store/reducers';
-import { UiState } from './ui-state';
+
+// State
+export type UiState = {
+  readonly loading: boolean;
+};
 
 const getInitialState = (): UiState => ({ loading: false });
 
+// Reducer
 export const { reducer: UiReducer, actions: UiActions } = createSlice({
   name: 'uiState',
   initialState: getInitialState(),
@@ -18,6 +23,7 @@ export const { reducer: UiReducer, actions: UiActions } = createSlice({
   },
 });
 
+// Selectors
 export const isLoading = ({ uiState }: RootState) => {
   return uiState.loading;
 };
