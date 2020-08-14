@@ -2,11 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { AsyncValue } from 'models/AsyncValue';
 import { Character } from 'models/Character';
+import { CharacterDataContainer } from 'models/CharacterDataContainer';
 import { RootState } from 'store/reducers';
 
 // State
 export type CharactersState = {
-  readonly charactersList: AsyncValue<Character[]>;
+  readonly charactersList: AsyncValue<CharacterDataContainer>;
   readonly favoriteCharacters: Character[];
 };
 
@@ -24,10 +25,16 @@ export const {
   initialState: getInitialState(),
   reducers: {
     resetCharacterList(state, action: PayloadAction<void>) {
-      state = getInitialState();
+      return {
+        ...state,
+        charactersList: getInitialState().charactersList,
+      };
     },
-    charactersListSuccess(state, action: PayloadAction<Character[]>) {
-      state = {
+    charactersListSuccess(
+      state,
+      action: PayloadAction<CharacterDataContainer>,
+    ) {
+      return {
         ...state,
         charactersList: {
           loading: false,
@@ -37,7 +44,7 @@ export const {
       };
     },
     charactersListError(state, action: PayloadAction<Error>) {
-      state = {
+      return {
         ...state,
         charactersList: {
           loading: false,
@@ -53,7 +60,7 @@ export const {
       };
     },
     unfavoriteCharacter(state, action: PayloadAction<number>) {
-      state = {
+      return {
         ...state,
         favoriteCharacters: state.favoriteCharacters.filter(
           c => c.id !== action.payload,

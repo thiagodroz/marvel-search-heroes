@@ -15,10 +15,10 @@ export const { reducer: UiReducer, actions: UiActions } = createSlice({
   initialState: getInitialState(),
   reducers: {
     showLoading(state, action: PayloadAction<void>) {
-      state.loading = true;
+      return { ...state, loading: true };
     },
     hideLoading(state, action: PayloadAction<void>) {
-      state.loading = false;
+      return { ...state, loading: false };
     },
   },
 });

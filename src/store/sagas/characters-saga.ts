@@ -15,8 +15,8 @@ export function* fetchCharactersSaga() {
   try {
     const result = yield* call(getCharacters, {});
 
-    if (result.code === 200 && result.data?.results) {
-      yield put(CharactersActions.charactersListSuccess(result.data?.results));
+    if (result.code === 200 && result.data) {
+      yield put(CharactersActions.charactersListSuccess(result.data));
     } else {
       yield put(
         CharactersActions.charactersListError(

@@ -5,7 +5,7 @@ import storage from 'redux-persist/lib/storage';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 
 import { RootReducer, RootState } from 'store/reducers';
-// import { createRootSaga } from 'store/sagas';
+import { rootSaga } from 'store/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -25,7 +25,7 @@ export const store = configureStore({
 
 export const persistor = persistStore(store);
 
-// sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga);
 
 export type AppStore = ReturnType<typeof createStore>;
 
