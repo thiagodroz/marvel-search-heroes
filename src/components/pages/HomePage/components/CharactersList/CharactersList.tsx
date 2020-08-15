@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 
 import { Switch } from 'components/shared/Switch';
 import { useCharactersList } from './CharactersList.hook';
+import { CharactersListItem } from '../CharactersListItem';
 
-import HeroIcon from 'assets/icons/hero.svg';
-import HeartIcon from 'assets/icons/heart-filled.svg';
+import { ReactComponent as HeroIcon } from 'assets/icons/hero.svg';
+import { ReactComponent as HeartIcon } from 'assets/icons/heart-filled.svg';
 import Styles from './CharactersList.module.scss';
 
 enum CharactersListMode {
@@ -55,7 +56,7 @@ export const CharactersList: React.FC = () => {
           <span>Ordenar por nome - A/Z</span>
           <Switch
             valueOn={CharactersListMode.FavoriteHeroes}
-            valueOff={CharactersListMode.FavoriteHeroes}
+            valueOff={CharactersListMode.FetchedHeroes}
             onChange={setMode}
             initialValue="off"
           />
@@ -63,7 +64,14 @@ export const CharactersList: React.FC = () => {
           <span>Somente favoritos</span>
         </div>
       </header>
-      <div className={Styles.HeroesListBody}>{results?.map(c => c.name)}</div>
+      <div className={Styles.HeroesListBody}>
+        {(mode === CharactersListMode.FavoriteHeroes
+          ? favoriteCharacters
+          : results
+        )?.map(c => (
+          <CharactersListItem key={c.id} character={c} />
+        ))}
+      </div>
     </section>
   );
 };
