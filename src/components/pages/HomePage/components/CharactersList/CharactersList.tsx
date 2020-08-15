@@ -64,14 +64,16 @@ export const CharactersList: React.FC = () => {
           <span>Somente favoritos</span>
         </div>
       </header>
-      <div className={Styles.HeroesListBody}>
+      <ul className={Styles.HeroesListBody}>
         {(mode === CharactersListMode.FavoriteHeroes
           ? favoriteCharacters
           : results
         )?.map(c => (
-          <CharactersListItem key={c.id} character={c} />
+          <li>
+            <CharactersListItem key={c.id} character={c} />
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 };

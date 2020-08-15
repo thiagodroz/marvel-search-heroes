@@ -16,7 +16,30 @@
 }
 
 .HeroesOrder {
+  display: flex;
+  align-items: center;
   color: $primary-color;
+
+  img,
+  span,
+  button {
+    margin: 0 0.5rem;
+  }
+}
+
+.HeroesListBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  list-style: none;
+
+  li {
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+
+    &:nth-of-type(4n) {
+      margin-right: 0;
+    }
+  }
 }
 
 .Loading {
