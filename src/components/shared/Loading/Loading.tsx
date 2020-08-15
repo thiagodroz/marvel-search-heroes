@@ -3,7 +3,7 @@ import React from 'react';
 import { useLoading } from './Loading.hook';
 
 import LoadingSvg from 'assets/loading.svg';
-import './Loading.scss';
+import './Loading.module.scss';
 
 interface LoadingProps {
   readonly alwaysVisible?: boolean;
