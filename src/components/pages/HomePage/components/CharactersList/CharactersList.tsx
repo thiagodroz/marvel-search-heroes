@@ -2,7 +2,6 @@ import React from 'react';
 
 import { useCharactersList } from './CharactersList.hook';
 
-import LoadingSvg from 'assets/loading.svg';
 import Styles from './CharactersList.module.scss';
 
 export const CharactersList: React.FC = () => {

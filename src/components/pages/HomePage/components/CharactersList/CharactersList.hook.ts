@@ -9,7 +9,6 @@ import {
 export const useCharactersList = () => {
   const listContainer = useSelector(getCharactersList);
   const dispatch = useDispatch();
-  console.log(listContainer);
 
   useEffect(() => {
     dispatch(CharactersActions.fetchCharactersListSaga());

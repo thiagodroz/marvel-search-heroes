@@ -1,9 +1,16 @@
 import axios from 'axios';
 
-export const httpClient = axios.create({
+const httpClient = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
-  headers: {
-    ContentType: 'application/json',
-    apiKey: process.env.REACT_APP_API_KEY,
-  },
 });
+
+httpClient.interceptors.request.use(config => {
+  config.params = {
+    apikey: process.env.REACT_APP_API_KEY,
+    ...config.params,
+  };
+
+  return config;
+});
+
+export { httpClient };

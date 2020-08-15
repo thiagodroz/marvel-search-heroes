@@ -13,10 +13,10 @@ export function* fetchCharactersSaga() {
   yield put(CharactersActions.resetCharacterList());
 
   try {
-    const result = yield* call(getCharacters, {});
+    const { data } = yield* call(getCharacters, {});
 
-    if (result.code === 200 && result.data) {
-      yield put(CharactersActions.charactersListSuccess(result.data));
+    if (data.code === 200 && data.data) {
+      yield put(CharactersActions.charactersListSuccess(data.data));
     } else {
       yield put(
         CharactersActions.charactersListError(

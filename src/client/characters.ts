@@ -6,13 +6,11 @@ interface GetCharactersRequest {
   readonly offset?: number;
 }
 
-export const getCharacters = ({
-  offset,
-}: GetCharactersRequest): Promise<CharacterDataWrapper> => {
+export const getCharacters = ({ offset }: GetCharactersRequest) => {
   const url = urlBuilder('/characters', {
     limit: 20,
     offset,
   });
 
-  return httpClient.get(url);
+  return httpClient.get<CharacterDataWrapper>(url);
 };
