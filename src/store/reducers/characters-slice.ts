@@ -54,7 +54,7 @@ export const {
       };
     },
     favoriteCharacter(state, action: PayloadAction<Character>) {
-      state = {
+      return {
         ...state,
         favoriteCharacters: [...state.favoriteCharacters, action.payload],
       };

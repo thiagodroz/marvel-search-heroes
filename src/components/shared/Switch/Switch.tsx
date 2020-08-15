@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 
-import ToggleOn from 'assets/toggle-on.svg';
-import ToggleOff from 'assets/toggle-off.svg';
+import { ReactComponent as ToggleOn } from 'assets/toggle-on.svg';
+import { ReactComponent as ToggleOff } from 'assets/toggle-off.svg';
 import Styles from './Switch.module.scss';
 
 interface ToggleProps<T> {
