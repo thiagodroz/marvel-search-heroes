@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+import { Switch } from 'components/shared/Switch';
 import { useCharactersList } from './CharactersList.hook';
 
+import HeroIcon from 'assets/icons/hero.svg';
+import HeartIcon from 'assets/icons/heart-filled.svg';
 import Styles from './CharactersList.module.scss';
 
+enum CharactersListMode {
+  FetchedHeroes = 'fetched-heroes',
+  FavoriteHeroes = 'favorite-heroes',
+}
+
 export const CharactersList: React.FC = () => {
-  const { charactersList, tryAgain } = useCharactersList();
+  const [mode, setMode] = useState<CharactersListMode>(
+    CharactersListMode.FetchedHeroes,
+  );
+  const { charactersList, favoriteCharacters, tryAgain } = useCharactersList();
 
   if (charactersList.loading)
     return (
@@ -27,5 +38,32 @@ export const CharactersList: React.FC = () => {
       </section>
     );
 
-  return <section className={Styles.Component}>Carregado</section>;
+  const { total, results } = charactersList.value;
+
+  return (
+    <section className={Styles.Component}>
+      <header className={Styles.HeroesListHeader}>
+        <div className={Styles.HeroesCount}>
+          Encontrados{' '}
+          {mode === CharactersListMode.FetchedHeroes
+            ? total
+            : favoriteCharacters.length}{' '}
+          her&oacute;is
+        </div>
+        <div className={Styles.HeroesOrder}>
+          <HeroIcon />
+          <span>Ordenar por nome - A/Z</span>
+          <Switch
+            valueOn={CharactersListMode.FavoriteHeroes}
+            valueOff={CharactersListMode.FavoriteHeroes}
+            onChange={setMode}
+            initialValue="off"
+          />
+          <HeartIcon />
+          <span>Somente favoritos</span>
+        </div>
+      </header>
+      <div className={Styles.HeroesListBody}>{results?.map(c => c.name)}</div>
+    </section>
+  );
 };

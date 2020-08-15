@@ -3,6 +3,22 @@
 .Component {
 }
 
+.HeroesListHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 5rem 0 3rem;
+}
+
+.HeroesCount {
+  color: $light-text-color;
+}
+
+.HeroesOrder {
+  color: $primary-color;
+}
+
 .Loading {
   display: flex;
   justify-content: center;
