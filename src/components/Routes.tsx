@@ -7,8 +7,14 @@ const NotFoundPage = lazy(() => import('components/pages/NotFoundPage'));
 
 export const Routes = () => (
   <Switch>
-    <Route path="/" exact component={HomePage} />
-    <Route path="/hero/:id" exact component={HeroPage} />
-    <Route component={NotFoundPage} />
+    <Route path="/" exact>
+      <HomePage />
+    </Route>
+    <Route path="/hero/:id" exact>
+      <HeroPage />
+    </Route>
+    <Route>
+      <NotFoundPage />
+    </Route>
   </Switch>
 );

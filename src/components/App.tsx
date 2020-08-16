@@ -2,17 +2,15 @@ import React, { Suspense } from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import { Router } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
 
 import { Loading } from 'components/shared/Loading';
 import { Routes } from 'components/Routes';
-import { store, persistor } from 'store';
+import { persistor, store, history } from 'store';
+import { ConnectedRouter } from 'connected-react-router';
 
-export const App = () => {
-  const history = createBrowserHistory();
-
-  return (
-    <Provider store={store}>
+export const App = () => (
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
       <PersistGate persistor={persistor}>
         <Router history={history}>
           <Suspense fallback={<Loading alwaysVisible />}>
@@ -21,6 +19,6 @@ export const App = () => {
           </Suspense>
         </Router>
       </PersistGate>
-    </Provider>
-  );
-};
+    </ConnectedRouter>
+  </Provider>
+);

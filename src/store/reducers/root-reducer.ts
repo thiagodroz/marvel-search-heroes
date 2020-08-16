@@ -1,11 +1,13 @@
 import { combineReducers } from '@reduxjs/toolkit';
+import { connectRouter } from 'connected-react-router';
+import { History } from 'history';
 
 import { CharactersReducer } from './characters-slice';
 import { UiReducer } from './ui-slice';
 
-export const RootReducer = combineReducers({
-  charactersState: CharactersReducer,
-  uiState: UiReducer,
-});
-
-export type RootState = ReturnType<typeof RootReducer>;
+export const createRootReducer = (history: History) =>
+  combineReducers({
+    charactersState: CharactersReducer,
+    uiState: UiReducer,
+    router: connectRouter(history),
+  });

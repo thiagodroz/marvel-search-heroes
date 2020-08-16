@@ -5,15 +5,20 @@ import {
   CharactersActions,
   getFavoriteCharacters,
   FavoriteCharacterSagaAction,
+  FetchCharactersListSagaAction,
 } from 'store/reducers/characters-slice';
 import { UiActions } from 'store/reducers/ui-slice';
 
-export function* fetchCharactersSaga() {
+export function* fetchCharactersSaga({
+  payload,
+}: FetchCharactersListSagaAction) {
   yield put(UiActions.showLoading());
   yield put(CharactersActions.resetCharacterList());
 
   try {
-    const { data } = yield* call(getCharacters, {});
+    const { data } = yield* call(getCharacters, {
+      nameStartsWith: payload || undefined,
+    });
 
     if (data.code === 200 && data.data) {
       yield put(CharactersActions.charactersListSuccess(data.data));

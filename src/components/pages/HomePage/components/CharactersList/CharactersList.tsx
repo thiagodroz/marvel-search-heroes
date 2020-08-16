@@ -69,8 +69,8 @@ export const CharactersList: React.FC = () => {
           ? favoriteCharacters
           : results
         )?.map(c => (
-          <li>
-            <CharactersListItem key={c.id} character={c} />
+          <li key={c.id}>
+            <CharactersListItem character={c} />
           </li>
         ))}
       </ul>

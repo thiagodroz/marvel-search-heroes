@@ -1,4 +1,5 @@
 import { useEffect, useCallback } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -10,19 +11,22 @@ import {
 export const useCharactersList = () => {
   const listContainer = useSelector(getCharactersList);
   const favoriteCharacters = useSelector(getFavoriteCharacters);
+  const location = useLocation();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(CharactersActions.fetchCharactersListSaga());
-  }, [dispatch]);
+  const query = new URLSearchParams(location.search).get('query');
 
-  const tryAgain = useCallback(() => {
-    dispatch(CharactersActions.fetchCharactersListSaga());
-  }, [dispatch]);
+  const fetchCharacters = useCallback(() => {
+    dispatch(CharactersActions.fetchCharactersListSaga(query));
+  }, [dispatch, query]);
+
+  useEffect(() => {
+    fetchCharacters();
+  }, [fetchCharacters]);
 
   return {
     charactersList: listContainer,
     favoriteCharacters,
-    tryAgain,
+    tryAgain: fetchCharacters,
   };
 };

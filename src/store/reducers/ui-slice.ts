@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { RootState } from 'store/reducers';
+import { RootState } from 'store';
 
 // State
 export type UiState = {

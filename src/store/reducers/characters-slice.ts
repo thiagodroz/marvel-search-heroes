@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AsyncValue } from 'models/AsyncValue';
 import { Character } from 'models/Character';
 import { CharacterDataContainer } from 'models/CharacterDataContainer';
-import { RootState } from 'store/reducers';
+import { RootState } from 'store';
 
 // State
 export type CharactersState = {
@@ -67,7 +67,7 @@ export const {
         ),
       };
     },
-    fetchCharactersListSaga(state, action: PayloadAction<void>) {},
+    fetchCharactersListSaga(state, action: PayloadAction<string | null>) {},
     favoriteCharacterSaga(state, action: PayloadAction<Character>) {},
   },
 });
@@ -80,6 +80,10 @@ export const getFavoriteCharacters = ({ charactersState }: RootState) =>
   charactersState.favoriteCharacters;
 
 // Action Types
+export type FetchCharactersListSagaAction = ReturnType<
+  typeof CharactersActions.fetchCharactersListSaga
+>;
+
 export type FavoriteCharacterSagaAction = ReturnType<
   typeof CharactersActions.favoriteCharacterSaga
 >;
