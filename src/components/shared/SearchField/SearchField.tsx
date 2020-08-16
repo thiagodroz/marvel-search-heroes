@@ -1,11 +1,19 @@
 import React, { useCallback, KeyboardEvent } from 'react';
+import classNames from 'classnames';
 
 import { useSearchField } from './SearchField.hook';
 
 import SearchIcon from 'assets/icons/search.svg';
 import Styles from './SearchField.module.scss';
 
-export const SearchField: React.FC = () => {
+interface SearchFieldProps {
+  readonly secondary?: boolean;
+  readonly children?: never;
+}
+
+export const SearchField: React.FC<SearchFieldProps> = ({
+  secondary = false,
+}) => {
   const { onChange, onSearch, value } = useSearchField();
 
   const onKeyPress = useCallback(
@@ -18,7 +26,11 @@ export const SearchField: React.FC = () => {
   );
 
   return (
-    <div className={Styles.Component}>
+    <div
+      className={classNames(Styles.Component, {
+        [Styles.Secondary]: secondary,
+      })}
+    >
       <button type="button" className={Styles.Button} onClick={onSearch}>
         <img src={SearchIcon} alt="Buscar" />
       </button>

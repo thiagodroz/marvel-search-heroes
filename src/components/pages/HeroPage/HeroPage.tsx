@@ -1,5 +1,14 @@
 import React from 'react';
 
 import { Container } from 'components/shared/Container';
+import { Layout } from 'components/shared/Layout';
 
-export const HeroPage: React.FC = () => <Container>Hero</Container>;
+import Styles from './HeroPage.module.scss';
+import { Header } from './components/Header';
+
+export const HeroPage: React.FC = () => (
+  <Layout className={Styles.Component}>
+    <Header />
+    <Container>Pokemon</Container>
+  </Layout>
+);

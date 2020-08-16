@@ -2,12 +2,12 @@ import React from 'react';
 
 import { SearchField } from 'components/shared/SearchField';
 
-import { ReactComponent as Logo } from 'assets/logo.svg';
+import Logo from 'assets/logo.png';
 import Styles from './Header.module.scss';
 
 export const Header: React.FC = () => (
   <header className={Styles.Component}>
-    <Logo />
+    <img src={Logo} alt="Marvel Search Heroes" />
     <h1 className={Styles.Title}>Explore o Universo</h1>
     <p className={Styles.Subtitle}>
       Mergulhe no dom&iacute;nio deslumbrante de todos os personagens

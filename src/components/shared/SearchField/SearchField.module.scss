@@ -5,6 +5,29 @@
   width: 90%;
   height: 3.5rem;
   margin: 3rem auto 0;
+
+  &.Secondary {
+    height: 2.5rem;
+    margin: 0;
+
+    .Button {
+      width: 2rem;
+
+      img {
+        width: 1rem;
+      }
+    }
+
+    .Input {
+      background-color: $disabled-secondary-color;
+
+      &::placeholder {
+        color: $regular-text-color;
+        font-size: 0.8em;
+        font-weight: 600;
+      }
+    }
+  }
 }
 
 .Button {

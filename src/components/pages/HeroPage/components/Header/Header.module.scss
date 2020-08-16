@@ -1,0 +1,16 @@
+@import 'styles/constants';
+
+.Component {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  margin-top: 1rem;
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+}
+
+.Logo {
+  img {
+    width: 10rem;
+  }
+}
