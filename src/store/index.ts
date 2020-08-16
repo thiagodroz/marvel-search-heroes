@@ -14,7 +14,7 @@ const persistConfig = {
   key: 'root',
   storage,
   stateReconciler: autoMergeLevel2,
-  blacklist: ['router'],
+  blacklist: ['router', 'uiState'],
 };
 
 export const history = createBrowserHistory();

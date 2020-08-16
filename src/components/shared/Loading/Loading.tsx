@@ -3,7 +3,7 @@ import React from 'react';
 import { useLoading } from './Loading.hook';
 
 import LoadingSvg from 'assets/loading.svg';
-import './Loading.module.scss';
+import Styles from './Loading.module.scss';
 
 interface LoadingProps {
   readonly alwaysVisible?: boolean;
@@ -16,7 +16,7 @@ export const Loading: React.FC<LoadingProps> = ({ alwaysVisible = false }) => {
   if (!alwaysVisible && !loading) return null;
 
   return (
-    <div className="loading">
+    <div className={Styles.Component}>
       <img src={LoadingSvg} alt="Carregando..." />
     </div>
   );
