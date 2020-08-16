@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { FavoriteButton } from 'components/shared/FavoriteButton';
 import { Character } from 'models/Character';
@@ -15,7 +16,7 @@ export const CharactersListItem: React.FC<ChatactersListItemProps> = ({
   character,
 }) => {
   return (
-    <div className={Styles.Component}>
+    <Link to={`/hero/${character.id}`} className={Styles.Component}>
       <figure className={Styles.Thumbnail}>
         {character.thumbnail &&
         character.thumbnail.path &&
@@ -35,6 +36,6 @@ export const CharactersListItem: React.FC<ChatactersListItemProps> = ({
         <span className={Styles.HeroName}>{character.name}</span>
         <FavoriteButton character={character} />
       </div>
-    </div>
+    </Link>
   );
 };

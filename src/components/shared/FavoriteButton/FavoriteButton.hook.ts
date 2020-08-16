@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, MouseEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Character } from 'models/Character';
@@ -13,14 +13,20 @@ export const useFavoriteButton = (character: Character) => {
 
   const isFavorite = favoriteCharacters.some(c => c.id === character.id);
 
-  const handleFavoriteCharacter = useCallback(() => {
-    if (isFavorite) {
-      if (character.id !== undefined)
-        dispatch(CharactersActions.unfavoriteCharacter(character.id));
-    } else {
-      dispatch(CharactersActions.favoriteCharacterSaga(character));
-    }
-  }, [dispatch, character, isFavorite]);
+  const handleFavoriteCharacter = useCallback(
+    (event: MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      if (isFavorite) {
+        if (character.id !== undefined)
+          dispatch(CharactersActions.unfavoriteCharacter(character.id));
+      } else {
+        dispatch(CharactersActions.favoriteCharacterSaga(character));
+      }
+    },
+    [dispatch, character, isFavorite],
+  );
 
   return {
     handleFavoriteCharacter,
