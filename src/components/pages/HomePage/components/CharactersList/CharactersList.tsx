@@ -22,7 +22,7 @@ export const CharactersList: React.FC = () => {
   if (charactersList.loading)
     return (
       <section className={Styles.Loading}>
-        Carregando Lista de heróis...
+        Carregando Lista de her&oacute;is...
       </section>
     );
 

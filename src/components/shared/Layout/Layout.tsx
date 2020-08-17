@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { Footer } from 'components/pages/HomePage/components/Footer';
+import { Footer } from 'components/shared/Footer';
 
 import Styles from './Layout.module.scss';
 

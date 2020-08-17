@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomePages's Footer spec should match last snapshot 1`] = `
+<div>
+  <footer
+    class="Component"
+  >
+    <div
+      class="Component"
+    >
+      <strong
+        class="Text"
+      >
+        © 2020 Feito por Thiago Nogueira
+      </strong>
+    </div>
+  </footer>
+</div>
+`;
