@@ -4,7 +4,7 @@
 }
 
 .Title {
-  margin: 4rem 0 2rem;
+  margin: 6rem 0 2rem;
   color: $dark-text-color;
   font-size: 1.2em;
   font-weight: 900;
@@ -12,7 +12,7 @@
 
 .ComicsList {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   width: 100%;
 
   li {
