@@ -1,11 +1,11 @@
-import { CharacterDataContainer } from 'models/CharacterDataContainer';
+import { DataContainer } from 'models/DataContainer';
 
-export interface CharacterDataWrapper {
+export interface DataWrapper<T> {
   readonly code?: number;
   readonly status?: string;
   readonly copyright?: string;
   readonly attributionText?: string;
   readonly attributionHTML?: string;
-  readonly data?: CharacterDataContainer;
+  readonly data?: DataContainer<T>;
   readonly etag?: string;
 }

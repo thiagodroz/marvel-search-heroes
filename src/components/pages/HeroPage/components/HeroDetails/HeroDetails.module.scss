@@ -1,0 +1,18 @@
+.Component {
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+}
+
+.HeroImage {
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 40%;
+  }
+}

@@ -13,8 +13,8 @@ export interface Character {
   readonly resourceURI?: string;
   readonly urls?: Url[];
   readonly thumbnail?: Image;
-  readonly comics?: ComicList[];
-  readonly stories?: StoryList[];
-  readonly events?: EventList[];
-  readonly series?: SeriesList[];
+  readonly comics?: ComicList;
+  readonly stories?: StoryList;
+  readonly events?: EventList;
+  readonly series?: SeriesList;
 }

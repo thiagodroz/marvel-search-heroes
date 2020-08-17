@@ -1,5 +1,7 @@
 import { httpClient } from 'client';
-import { CharacterDataWrapper } from 'models/CharacterDataWrapper';
+import { Character } from 'models/Character';
+import { Comic } from 'models/Comic';
+import { DataWrapper } from 'models/DataWrapper';
 import { urlBuilder } from 'utils/url-builder';
 
 interface GetCharactersRequest {
@@ -17,5 +19,17 @@ export const getCharacters = ({
     nameStartsWith,
   });
 
-  return httpClient.get<CharacterDataWrapper>(url);
+  return httpClient.get<DataWrapper<Character>>(url);
+};
+
+export const getCharacterDetails = (id: string | number) =>
+  httpClient.get<DataWrapper<Character>>(`/characters/${id}`);
+
+export const getCharacterLastComics = (id: string | number) => {
+  const url = urlBuilder(`/characters/${id}/comics`, {
+    limit: 10,
+    orderBy: '-onsaleDate',
+  });
+
+  return httpClient.get<DataWrapper<Comic>>(url);
 };

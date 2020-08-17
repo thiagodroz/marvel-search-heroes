@@ -1,0 +1,72 @@
+@import 'styles/constants';
+
+.Component {
+  position: relative;
+}
+
+.CharacterName {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  color: lighten($secondary-color, 5%);
+  font-size: 15em;
+  font-weight: 900;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.Title {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+
+  h2 {
+    width: fit-content;
+    color: $dark-text-color;
+    font-size: 1.5em;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}
+
+.CharacterDescription {
+  position: relative;
+  margin: 2rem 0;
+  line-height: 1.5rem;
+  color: $regular-text-color;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+.CharacterAppearances {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+
+  li {
+    width: 40%;
+  }
+}
+
+.AppearanceTitle {
+  color: $dark-text-color;
+  font-size: 0.8em;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.AppearanceDetails {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  svg {
+    margin-right: 1rem;
+  }
+  span {
+    color: $dark-text-color;
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+}

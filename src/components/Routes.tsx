@@ -10,7 +10,9 @@ export const Routes = () => (
     <Route path="/" exact>
       <HomePage />
     </Route>
-    <Route path="/hero/:id" exact component={HeroPage} />
+    <Route path="/hero/:id" exact>
+      <HeroPage />
+    </Route>
     <Route>
       <NotFoundPage />
     </Route>

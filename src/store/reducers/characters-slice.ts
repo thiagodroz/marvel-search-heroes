@@ -2,17 +2,22 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { AsyncValue } from 'models/AsyncValue';
 import { Character } from 'models/Character';
-import { CharacterDataContainer } from 'models/CharacterDataContainer';
+import { Comic } from 'models/Comic';
+import { DataContainer } from 'models/DataContainer';
 import { RootState } from 'store';
 
 // State
 export type CharactersState = {
-  readonly charactersList: AsyncValue<CharacterDataContainer>;
+  readonly charactersList: AsyncValue<DataContainer<Character>>;
+  readonly characterComics: AsyncValue<DataContainer<Comic>>;
+  readonly characterDetails: AsyncValue<Character>;
   readonly favoriteCharacters: Character[];
 };
 
 const getInitialState = (): CharactersState => ({
+  characterComics: { loading: true },
   charactersList: { loading: true },
+  characterDetails: { loading: true },
   favoriteCharacters: [],
 });
 
@@ -32,7 +37,7 @@ export const {
     },
     charactersListSuccess(
       state,
-      action: PayloadAction<CharacterDataContainer>,
+      action: PayloadAction<DataContainer<Character>>,
     ) {
       return {
         ...state,
@@ -47,6 +52,58 @@ export const {
       return {
         ...state,
         charactersList: {
+          loading: false,
+          success: false,
+          error: action.payload,
+        },
+      };
+    },
+    resetCharacterDetails(state, action: PayloadAction<void>) {
+      return {
+        ...state,
+        characterDetails: getInitialState().characterDetails,
+      };
+    },
+    characterDetailsSuccess(state, action: PayloadAction<Character>) {
+      return {
+        ...state,
+        characterDetails: {
+          loading: false,
+          success: true,
+          value: action.payload,
+        },
+      };
+    },
+    characterDetailsError(state, action: PayloadAction<Error>) {
+      return {
+        ...state,
+        characterDetails: {
+          loading: false,
+          success: false,
+          error: action.payload,
+        },
+      };
+    },
+    resetCharacterComics(state, action: PayloadAction<void>) {
+      return {
+        ...state,
+        characterComics: getInitialState().characterComics,
+      };
+    },
+    characterComicsSuccess(state, action: PayloadAction<DataContainer<Comic>>) {
+      return {
+        ...state,
+        characterComics: {
+          loading: false,
+          success: true,
+          value: action.payload,
+        },
+      };
+    },
+    characterComicsError(state, action: PayloadAction<Error>) {
+      return {
+        ...state,
+        characterComics: {
           loading: false,
           success: false,
           error: action.payload,
@@ -68,6 +125,8 @@ export const {
       };
     },
     fetchCharactersListSaga(state, action: PayloadAction<string | null>) {},
+    fetchCharacterComicsSaga(state, action: PayloadAction<string | number>) {},
+    fetchCharacterDetailsSaga(state, action: PayloadAction<string | number>) {},
     favoriteCharacterSaga(state, action: PayloadAction<Character>) {},
   },
 });
@@ -76,12 +135,26 @@ export const {
 export const getCharactersList = ({ charactersState }: RootState) =>
   charactersState.charactersList;
 
+export const getCharacterComics = ({ charactersState }: RootState) =>
+  charactersState.characterComics;
+
+export const getCharacterDetails = ({ charactersState }: RootState) =>
+  charactersState.characterDetails;
+
 export const getFavoriteCharacters = ({ charactersState }: RootState) =>
   charactersState.favoriteCharacters;
 
 // Action Types
 export type FetchCharactersListSagaAction = ReturnType<
   typeof CharactersActions.fetchCharactersListSaga
+>;
+
+export type FetchCharactersComicsSagaAction = ReturnType<
+  typeof CharactersActions.fetchCharacterComicsSaga
+>;
+
+export type FetchCharacterDetailsSagaAction = ReturnType<
+  typeof CharactersActions.fetchCharacterDetailsSaga
 >;
 
 export type FavoriteCharacterSagaAction = ReturnType<
