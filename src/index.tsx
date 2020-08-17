@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { App } from 'components/App';
 
 import * as serviceWorker from 'serviceWorker';
+import 'workaround-scss-conflicting-order';
 import 'styles/index.scss';
 import 'typeface-work-sans';
 
