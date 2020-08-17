@@ -1,0 +1,13 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "integrationFolder": "cypress/e2e",
+  "env": {
+    "apiBaseUrl": "https://api.dev.nodis.com.br",
+    "username": "thiago.oliveira@nodis.com.br",
+    "password": "nodis2019",
+    "kcRoot": "https://sso.nodis.com.br",
+    "kcRealm": "nodis-dev",
+    "kcClient": "frontend",
+    "kcRedirectUri": "http://localhost:3000"
+  }
+}

@@ -14,7 +14,7 @@ export type CharactersState = {
   readonly favoriteCharacters: Character[];
 };
 
-const getInitialState = (): CharactersState => ({
+export const getInitialState = (): CharactersState => ({
   characterComics: { loading: true },
   charactersList: { loading: true },
   characterDetails: { loading: true },

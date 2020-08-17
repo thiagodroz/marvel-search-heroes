@@ -29,14 +29,33 @@
     "typescript": "^3.9.7"
   },
   "devDependencies": {
+    "cypress": "^4.12.1",
+    "husky": "^4.2.5",
+    "is-ci-cli": "^2.1.2",
+    "jest-watch-select-projects": "^2.0.0",
+    "jest-watch-typeahead": "^0.6.0",
+    "lint-staged": "^10.2.11",
     "node-sass": "^4.14.1",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "redux-mock-store": "^1.5.4",
+    "redux-saga-test-plan": "^4.0.0-rc.3",
+    "start-server-and-test": "^1.11.3",
+    "yarn-run-all": "^3.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|json|ts|tsx|md|scss|css)\" --write",
+    "test": "is-ci \"test:ci\" \"test:watch\"",
+    "test:ci": "CI=true react-scripts test --coverage --watchAll=false",
+    "test:no-watch": "react-scripts test --watchAll=false",
+    "test:watch": "react-scripts test",
+    "test:coverage": "react-scripts test --coverage --watchAll=false && open coverage/lcov-report/index.html",
+    "test:e2e": "start-server-and-test start http://localhost:3000 cy:run",
+    "test:all": "run-s test:no-watch test:e2e",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -51,6 +70,16 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,ts,tsx,md,scss,css}": [
+      "yarn prettier"
     ]
   }
 }

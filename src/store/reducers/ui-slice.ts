@@ -7,7 +7,7 @@ export type UiState = {
   readonly loading: boolean;
 };
 
-const getInitialState = (): UiState => ({ loading: false });
+export const getInitialState = (): UiState => ({ loading: false });
 
 // Reducer
 export const { reducer: UiReducer, actions: UiActions } = createSlice({
